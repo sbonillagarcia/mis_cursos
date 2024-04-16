@@ -9,6 +9,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   }
   
   /* Estilos para el título y el ícono */
@@ -39,18 +40,36 @@
     font-size: 16px;
   }
   
-  /* Estilos para los enlaces */
+  .lista {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center; /* Alinea verticalmente los elementos en el centro */
+  }
+  
   .links {
     text-decoration: none;
     color: #ffffff; /* Color del texto del enlace */
     background-color: #000000;
     border-radius: 50px;
     padding: 10px 30px;
+    
   }
   
   .links:hover {
     color: #000000; /* Color del texto del enlace al pasar el mouse */
     background-color: #e2c0e2;
   }
+  
+  .perfil-img {
+    width: 50px; /* Ancho deseado para la imagen */
+    height: 50px; /* Altura deseada para la imagen */
+    margin-right: 20px;
+    border-radius: 10%; /* Para hacer la imagen redonda como una foto de perfil */
+    object-fit: cover; /* Ajustar la imagen para cubrir el contenedor */
+    
+  }
+  
+  
  
   

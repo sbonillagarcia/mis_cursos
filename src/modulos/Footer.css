@@ -1,46 +1,33 @@
-/* Footer.css */
-
 .footer {
-    background-color: #072255;
-    color: #fff;
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    
-  }
-  
-  .footer div {
-    text-align: center;
-  }
-  
+  background-color: #bebebe;
+  color: #000;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.footer div {
+  padding: 10px;
+}
+
 .footer h4 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .footer p {
-    margin-bottom: 5px;
-  }
-  
-  .footer ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .footer ul li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-  
-  /* Estilos para los íconos de redes sociales */
-  .SocialIcon {
-    width: 40px;
-    height: 40px;
-    transition: transform 0.3s ease;
-  }
-  
-  .SocialIcon:hover {
-    transform: scale(1.2);
-  }
+  margin-bottom: 25px;
+  text-align: justify;
+}
+
+ul {
+  padding: 0;
+  margin-left: 30px;
+}
+
+ul li {
+  margin-bottom: 5px;
+  text-align: justify;
+}
+
+
+a {
+  color: #000000;
+}
