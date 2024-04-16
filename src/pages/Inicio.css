@@ -1,0 +1,37 @@
+/* Inicio.css */
+
+.principal {
+    margin: 20px;
+  }
+  
+  .cajas {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .box {
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .images {
+    width: 200px; /* Ajusta el ancho según sea necesario */
+    height: 150px; /* Ajusta la altura según sea necesario */
+  }
+  
+  .button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  p {
+    margin: 5px 0;
+    font-weight: bold;
+  }

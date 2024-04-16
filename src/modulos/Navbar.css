@@ -1,0 +1,56 @@
+/* Navbar.css */
+
+/* Estilos generales para la barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    font-family: Arial, sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  /* Estilos para el título y el ícono */
+  .titulo {
+    display: flex;
+    align-items: center;
+    color: #ffffff; /* Color del texto */
+    font-size: 40px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .icono {
+    margin-right: 10px;
+    color: #051f3d;
+    font-size: 4.5rem; /* Tamaño del ícono */
+    border-right: 5px solid #ffffff;
+    background-color: #ffffff;
+  }
+  
+  /* Estilos para la lista de enlaces */
+  .lista {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .listados {
+    font-size: 16px;
+  }
+  
+  /* Estilos para los enlaces */
+  .links {
+    text-decoration: none;
+    color: #ffffff; /* Color del texto del enlace */
+    background-color: #000000;
+    border-radius: 50px;
+    padding: 10px 30px;
+  }
+  
+  .links:hover {
+    color: #000000; /* Color del texto del enlace al pasar el mouse */
+    background-color: #e2c0e2;
+  }
+ 
+  

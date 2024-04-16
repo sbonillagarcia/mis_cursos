@@ -1,0 +1,46 @@
+/* Footer.css */
+
+.footer {
+    background-color: #072255;
+    color: #fff;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+  }
+  
+  .footer div {
+    text-align: center;
+  }
+  
+.footer h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .footer p {
+    margin-bottom: 5px;
+  }
+  
+  .footer ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer ul li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  /* Estilos para los íconos de redes sociales */
+  .SocialIcon {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+  }
+  
+  .SocialIcon:hover {
+    transform: scale(1.2);
+  }

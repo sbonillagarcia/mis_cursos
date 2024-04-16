@@ -1,0 +1,52 @@
+/* Certificados.css */
+
+.certificados-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #072255;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #053C76;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .certificados-container {
+      padding: 10px;
+    }
+  
+    input[type="text"],
+    input[type="date"],
+    button {
+      font-size: 14px;
+ }
+}
