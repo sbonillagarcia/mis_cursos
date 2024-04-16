@@ -19,20 +19,23 @@ const Navbar: React.FC<NavbarProps> = ({ fotoPerfil }) => { // Añade NavbarProp
           <Link className="links" to="/">Inicio</Link>
         </li>
         <li className="listados">
-          <Link className="links" to="/login">Iniciar Sesión</Link>
+          <Link className="links" to="/nosotros">Quienes somos</Link>
         </li>
         <li className="listados">
-          <Link className="links" to="/registro">Registrarse</Link>
-        </li>
-        <li className="listados">
-          <Link className="links" to="/nosotros">Nuestros Servicios</Link>
+          <Link className="links" to="/registro">Registrate</Link>
         </li>
         <li className="listados">
           <Link className="links" to="/certificaciones">Certificaciones</Link>
+        </li>
+        <li className="listados">
+          <Link className="links" to="/login">Calificanos</Link>
         </li>   
         <li className="listados">
-          <Link className="links" to="/perfil">Perfil</Link>
-        </li> 
+         <Link className="linked" to="/perfil">
+          <img src="/images/perfil2.jpg" alt="Perfil" className="perfil-img" />
+         </Link>
+        </li>
+
       </ul>
     </nav>
   );

@@ -17,41 +17,45 @@ body {
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     width: 100%;
   }
-  /* Estilos para Footer */
-  .footer {
-    background-color: #D9D9D9;
-    color: #000;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  /* Estilos para Inicio */
-  .principal {
-    padding: 20px;
-  }
-  
-  /* Estilos para Login */
-  .login-container {
-    padding: 20px;
-  }
-  
-  /* Estilos para Registro */
-  .registro-container {
-    padding: 20px;
-  }
-  
-  /* Estilos para Nosotros */
-  .nosotros-container {
-    padding: 20px;
-  }
-  /* Estilos para Formulario en Login */
-  .login-form {
-    margin-top: 20px;
-  }
-  
-  /* Estilos para Tarjetas en Nosotros */
-  .card {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
+ /* Estilos para Footer */
+footer {
+  background-color: #D9D9D9;
+  color: #000;
+  padding: 10px;
+  text-align: center;
+  clear: both; /* Limpiar el espacio entre el contenido y el footer */
+}
+
+/* Estilos para Inicio */
+.principal {
+  padding-bottom: 100px; /* Altura del footer */
+  overflow: auto; /* Agregar scroll si el contenido es más largo que la pantalla */
+}
+
+/* Estilos para Login */
+.login-container {
+  padding-bottom: 100px; /* Altura del footer */
+  overflow: auto; /* Agregar scroll si el contenido es más largo que la pantalla */
+}
+
+/* Estilos para Registro */
+.registro-container {
+  padding: 20px;
+}
+
+/* Estilos para Nosotros */
+.nosotros-container {
+  padding: 20px;
+}
+
+/* Estilos para Formulario en Login */
+.login-form {
+  margin-top: 20px;
+}
+
+/* Estilos para Tarjetas en Nosotros */
+.card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
