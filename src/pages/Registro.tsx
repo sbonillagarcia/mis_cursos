@@ -4,36 +4,25 @@ import './Registro.css';
 
 const Registro: React.FC = () => {
   const navigate = useNavigate(); // Obtiene la función de navegación
-  const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleRegistro = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Lógica para enviar datos de registro aquí
-    console.log('Datos de registro:', nombre, email, password);
+    console.log('Datos de registro:', email, password, confirmPassword);
     // Después del registro, redirige al usuario al perfil
     navigate('/perfil'); // Redirige al perfil después del registro
   };
 
   return (
     <div className="registro-container">
-      <h1>Registrarse</h1>
-      <p>Cree una cuenta para comenzar a usar nuestros servicios.</p>
+      <h1>Registrate gratis!!!</h1>
+      
       <form onSubmit={handleRegistro}>
         <div className="form-group">
-          <label htmlFor="nombre">Nombre Completo</label>
-          <input
-            type="text"
-            id="nombre"
-            name="nombre"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Correo Electrónico</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
@@ -54,12 +43,24 @@ const Registro: React.FC = () => {
             required
           />
         </div>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Confirmar Contraseña</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
         <button type="submit" className="registro-button">
-          Registrarse
+          Enviar
         </button>
       </form>
+      <p>Escala en un mundo lleno de posibilidades y conecta con culturas de todo el mundo!</p>
     </div>
   );
 };
 
-export default Registro;
+export default Registro;
