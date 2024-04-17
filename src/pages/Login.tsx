@@ -35,12 +35,12 @@ const Login = () => {
   ]; 
     
  return (
-    <div className="login-container">
-        <div className="comentarios-container">
+    <div className="cajas">
+        <div className="box">
         <h2>Comentarios de usuarios</h2>
-        <div className="comentarios-list">
+        <div className="">
           {comentarios.map((comentario) => (
-            <div key={comentario.id} className="Comentarios">
+            <div key={comentario.id} className="Comentario">
               <h3>{comentario.usuario}</h3>
               <p>{comentario.comentario}</p>
             </div>
