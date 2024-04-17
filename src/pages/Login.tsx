@@ -6,7 +6,7 @@ const Login = () => {
   const navigate = useNavigate();
   //const [comentarios, setComentarios] = useState([]);
 
-  const comentarios = [
+ const comentarios = [
     {
       id: 1,
       usuario: 'Juan',
@@ -35,19 +35,20 @@ const Login = () => {
   ]; 
     
  return (
-    <div className="cajas">
-        <div className="box">
+    
+        <div className="cajas3">
         <h2>Comentarios de usuarios</h2>
-        <div className="">
+        <div className="box3">
+        
           {comentarios.map((comentario) => (
-            <div key={comentario.id} className="Comentario">
-              <h3>{comentario.usuario}</h3>
+            <div key={comentario.id} className="comentario">
+              <h3>{comentario.usuario }</h3>
               <p>{comentario.comentario}</p>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    
   );
 };
 
