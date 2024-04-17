@@ -1,63 +1,56 @@
-/* Registro.css */
+h1 {
+  color: #096464;
+  margin-bottom: 50px;
+  text-align: center;
+}
 
-.registro-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .registro-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .registro-container p {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #666;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
-  }
-  
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .form-group input[type="text"]:focus,
-  .form-group input[type="email"]:focus,
-  .form-group input[type="password"]:focus {
-    outline: none;
-    border-color: #3498db;
-  }
-  
-  .registro-button {
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  .registro-button:hover {
-    background-color: #2980b9;
-  }
+form {
+  width: 500px;
+  max-width: 100%; /* Para asegurarse de que no sea más ancho que el contenedor principal */
+  height: auto;
+  background-color: #e3e4e4;
+  padding: 50px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  margin-bottom: 100px;
+  margin: 0 auto; /* Para centrar horizontalmente */
+}
+
+.registro-button {
+  background-color: #096464;
+  display: block; /* Convertir el botón en un bloque para poder aplicar márgenes */
+  margin: 0 auto; /* Centrar horizontalmente */
+  color: #fff; /* Color del texto del botón */
+  border: none; /* Eliminar el borde del botón */
+  padding: 10px 20px; /* Espaciado interno del botón */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+.registro-button:hover {
+  background-color: #004040; /* Cambiar color de fondo al pasar el mouse */
+}
+
+
+label {
+  color: #096464;
+}
+
+input {
+  width: 400px;
+  border: 2px solid #096464;
+  padding: 8px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  margin-bottom: 10px; /* Margen inferior */
+}
+
+p{
+  color: #445757;
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  opacity: 0.6;
+}
