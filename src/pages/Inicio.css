@@ -1,46 +1,11 @@
 /* Inicio.css */
 
-.principal {
-    margin: 20px;
-  }
-  
-  .cajas {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .box {
-    text-align: center;
-    margin: 10px;
-  }
-  
-  .images {
-    width: 200px; /* Ajusta el ancho según sea necesario */
-    height: 150px; /* Ajusta la altura según sea necesario */
-  }
-  
-  .button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
-  
-  p {
-    margin: 5px 0;
-    font-weight: bold;
-  }
-
   /* Estilos generales */
 
 /* Estilos para el contenedor principal */
 .principal {
   padding: 20px; /* Espaciado interno del contenedor principal */
+  margin: 20px;
 }
 
 /* Estilos para el contenedor de las cajas */
@@ -52,7 +17,7 @@
 /* Estilos para las cajas individuales */
 .box {
   width: 30%; /* Ancho de cada caja */
-  margin-bottom: 20px; /* Margen inferior entre cajas */
+  margin: 10px; /* Margen inferior entre cajas */
   padding: 20px; /* Espaciado interno de las cajas */
   border: 2px solid #b6b4b4; /* Borde de las cajas */
   border-radius: 5px; /* Bordes redondeados de las cajas */
@@ -112,13 +77,14 @@ span {
   text-align: justify;
   margin-left: 120px;
   font-family:Georgia, 'Times New Roman', Times, serif;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 #comentarios {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   padding: 30px;
   margin: 60px;
 }
+
 /* Estilos para los comentarios */
 .comentario {
   margin-bottom: 20px; /* Margen inferior para separar comentarios */
