@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useNavigate } from 'react-router-dom';
 import './Registro.css';
 
 const Registro: React.FC = () => {
-  const navigate = useNavigate(); // Obtiene la función de navegación
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleRegistro = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      console.error('Las contraseñas no coinciden');
+      return;
+    }
     try {
       const response = await fetch('http://localhost:5000/api/registro', {
         method: 'POST',
@@ -20,17 +24,25 @@ const Registro: React.FC = () => {
       });
       const data = await response.json();
       console.log(data.message);
+
+      // Guardar en MongoDB
+      await fetch('http://localhost:5000/api/guardar-en-mongo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+
       navigate('/perfil');
     } catch (error) {
       console.error('Error al registrar usuario:', error);
     }
   };
-  
 
   return (
     <div className="registro-container">
       <h1>Registrate gratis!!!</h1>
-      
       <form onSubmit={handleRegistro}>
         <div className="form-group">
           <label htmlFor="email">Email</label>

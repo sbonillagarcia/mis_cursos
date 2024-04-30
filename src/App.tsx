@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './modulos/Navbar';
@@ -10,18 +9,20 @@ import Nosotros from './pages/Nosotros';
 import Certificaciones from './pages/Certificaciones';
 import Perfil from './pages/Perfil';
 import { AuthProvider } from './AuthContext';
-//import { connectToMongo } from './mongo.js'; // Ruta a tu archivo mongo.js
 import './styles.css';
+//import { connectToMongo } from './mongo.js'; // Esta importación no es necesaria aquí
 
-function App() {
+const App = () => {
   const [fotoPerfil, setFotoPerfil] = useState('');
   const [mensajeServidor, setMensajeServidor] = useState('');
 
   useEffect(() => {
-   // connectToMongo(); // Llamada a la función para conectar a MongoDB
-    fetch('http://localhost:5000/api/ejemplo')
+    // Esta función debería estar en el servidor, no en el cliente
+    // connectToMongo(); // Llamada a la función para conectar a MongoDB
+
+    fetch('http://localhost:5000/api/registro')
       .then(response => response.json())
-      .then(data => setMensajeServidor(data.mensaje))
+      .then(data => setMensajeServidor(data.message))
       .catch(error => console.error(error));
   }, []);
 
@@ -39,10 +40,10 @@ function App() {
             <Route path="/certificaciones" element={<Certificaciones />} />
             <Route path="/perfil" element={<Perfil />} />
           </Routes>
+          <p>Respuesta del servidor: {mensajeServidor}</p>
         </div>
         <Footer />
       </Router>
-      <p>Respuesta del servidor: {mensajeServidor}</p>
     </AuthProvider>
   );
 }

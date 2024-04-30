@@ -1,5 +1,5 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Agrega useNavigate
+import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Perfil.css';
 
 interface Usuario {
@@ -10,19 +10,26 @@ interface Usuario {
 }
 
 const Perfil: React.FC = () => {
-  const navigate = useNavigate(); // Obtiene la función de navegación
+  const navigate = useNavigate();
 
-  const [usuario, setUsuario] = useState<Usuario>({
-    nombre: '',
-    numeroDocumento: '',
-    cursos: [],
-    fotoPerfil: ''
-  });
-  const [autenticado, setAutenticado] = useState(true);
+  const [usuario, setUsuario] = useState<Usuario | null>(null);
+  const [autenticado, setAutenticado] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
-    // Simulación de carga de datos del usuario
-    const usuarioRegistrado = {
+    const usuarioRegistrado = localStorage.getItem('usuario');
+    if (usuarioRegistrado) {
+      setUsuario(JSON.parse(usuarioRegistrado));
+      setAutenticado(true);
+    }
+  }, []);
+
+  const handleIniciarSesion = (e: FormEvent) => {
+    e.preventDefault();
+    // Aquí puedes realizar la lógica de autenticación
+    // Por ahora, solo vamos a simular que el usuario inicia sesión correctamente
+    setUsuario({
       nombre: 'Juan Pérez',
       numeroDocumento: '1234567890',
       cursos: [
@@ -31,28 +38,31 @@ const Perfil: React.FC = () => {
         { nombre: 'Curso 3', progreso: 100 },
       ],
       fotoPerfil: 'URL_DE_LA_IMAGEN'
-    };
-
-    setUsuario(usuarioRegistrado);
-  }, []);
+    });
+    setAutenticado(true);
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+  };
 
   const handleCerrarSesion = () => {
+    setUsuario(null);
     setAutenticado(false);
-    navigate('/');
+    localStorage.removeItem('usuario');
   };
 
   if (!autenticado) {
-    navigate('/');
-    return null;
+    return (
+      <div className="perfil-container">
+        <h1>Iniciar Sesión</h1>
+        <form onSubmit={handleIniciarSesion}>
+          <label>Email:</label>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <label>Contraseña:</label>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <button type="submit">Iniciar Sesión</button>
+        </form>
+      </div>
+    );
   }
-
-  const handleFotoChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (files && files.length > 0) {
-      const file = files[0];
-      setUsuario(prevUsuario => ({ ...prevUsuario, fotoPerfil: URL.createObjectURL(file) }));
-    }
-  };
 
   return (
     <div className="perfil-container">
@@ -61,21 +71,20 @@ const Perfil: React.FC = () => {
       <div className="perfil-info">
         <div>
           <label>Nombre:</label>
-          <p>{usuario.nombre}</p>
+          <p>{usuario?.nombre}</p>
         </div>
         <div>
           <label>Número de Documento:</label>
-          <p>{usuario.numeroDocumento}</p>
+          <p>{usuario?.numeroDocumento}</p>
         </div>
         <div className="foto-perfil">
-          <label htmlFor="fotoPerfil">Foto de Perfil:</label>
-          <input type="file" id="fotoPerfil" accept="image/*" onChange={handleFotoChange} />
-          {usuario.fotoPerfil && <img src={usuario.fotoPerfil} alt="Foto de Perfil" />}
+          <label>Foto de Perfil:</label>
+          <img src={usuario?.fotoPerfil} alt="Foto de Perfil" />
         </div>
       </div>
       <div className="cursos-container">
         <h2>Cursos Terminados</h2>
-        {usuario.cursos.map((curso, index) => (
+        {usuario?.cursos.map((curso, index) => (
           <div key={index}>
             <p>{curso.nombre}</p>
             <p>Progreso: {curso.progreso}%</p>
