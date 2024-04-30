@@ -1,30 +1,34 @@
+// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const { connectToMongo } = require('./mongo');
+const { guardarUsuario } = require('./mongo');
 
 const app = express();
 const PORT = 5000;
 
-mongoose.connect('mongodb://localhost:27017/usuarios', { useNewUrlParser: true, useUnifiedTopology: true });
-
-const User = mongoose.model('User', { email: String, password: String });
-
 app.use(bodyParser.json());
 
-app.post('/api/registro', async (req, res) => {
-    try {
-      const { email, password } = req.body;
-      const newUser = new User({ email, password });
-      await newUser.save();
-  
-      // Devolver los datos del usuario registrado
-      res.status(201).json({ message: 'Usuario registrado exitosamente', usuario: newUser });
-    } catch (error) {
-      res.status(500).json({ message: 'Error al registrar usuario', error: error.message });
-    }
-  });
-  
+// Inicializar la conexión a MongoDB antes de iniciar el servidor
+(async () => {
+  try {
+    await connectToMongo();
+    console.log('Conexión a MongoDB establecida');
+    app.listen(PORT, () => {
+      console.log(`Servidor iniciado en http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error('Error al conectar a MongoDB:', error);
+    process.exit(1); // Termina el proceso con código de error
+  }
+})();
 
-app.listen(PORT, () => {
-  console.log(`Servidor iniciado en http://localhost:${PORT}`);
+app.post('/api/guardar-en-mongo', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    await guardarUsuario(email, password);
+    res.status(200).json({ message: 'Datos guardados en MongoDB' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al guardar en MongoDB', error: error.message });
+  }
 });
