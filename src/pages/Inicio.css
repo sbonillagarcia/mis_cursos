@@ -1,9 +1,127 @@
 /* Inicio.css */
 
+  /* Estilos generales */
+
+/* Estilos para el contenedor principal */
 .principal {
-    margin: 20px;
-  }
+  padding: 20px; /* Espaciado interno del contenedor principal */
+  margin: 20px;
+}
+
+/* Estilos para el contenedor de las cajas */
+.cajas {
+  display: flex; /* Mostrar los elementos como flexbox */
+  justify-content: space-between; /* Distribuir el espacio entre los elementos */
+}
+
+/* Estilos para las cajas individuales */
+.box {
+  width: 30%; /* Ancho de cada caja */
+  margin: 10px; /* Margen inferior entre cajas */
+  padding: 20px; /* Espaciado interno de las cajas */
+  border: 2px solid #b6b4b4; /* Borde de las cajas */
+  border-radius: 5px; /* Bordes redondeados de las cajas */
+}
+
+/* Estilos para las imágenes dentro de las cajas */
+.images {
+  width: 100%; /* Ancho máximo de las imágenes */
+  height: auto; /* Altura automática para mantener la proporción */
+  border-radius: 5px; /* Bordes redondeados de las imágenes */
+}
+
+/* Estilos específicos para la sección de comentarios */
+.seccion1 {
+  margin-bottom: 40px; /* Margen inferior para separar de otros elementos */
+  margin-left: 60px;
+}
+
+/* Estilos para el texto 1 */
+.texto1 {
+  text-align: justify; /* Alineación justificada del texto */
+}
+
+/* Estilos para el color del texto dentro de span */
+span {
+  color: rgb(9, 105, 105); /* Color específico para los span */
+  text-align: justify; /* Alineación justificada del texto */
+}
+
+/* Estilos para el texto 2 */
+.texto2 {
+  color: #555; /* Color específico para el texto */
+  text-align: justify; /* Alineación justificada del texto */
+}
+
+/* Estilos para el texto 3 */
+.texto3 {
+  color: #555; /* Color específico para el texto */
+  text-align: justify; /* Alineación justificada del texto */
+}
+
+/* Estilos para el botón 1 */
+.button1 {
+  background-color: rgb(11, 112, 112); /* Color de fondo del botón */
+  float: right; /* Flotar el botón a la derecha */
+}
+
+/* Estilos para el botón con imagen */
+.boton {
+  position: absolute; /* Posición absoluta para fijar el botón */
+  right: 0; /* Alineación a la derecha */
+  bottom: 0; /* Alineación en la parte inferior */
+  margin-bottom: 20px; /* Margen inferior */
+}
+
+.seccion2 {
+  text-align: justify;
+  margin-left: 120px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 1rem;
+}
+#comentarios {
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  padding: 30px;
+  margin: 60px;
+}
+
+/* Estilos para los comentarios */
+.comentario {
+  margin-bottom: 20px; /* Margen inferior para separar comentarios */
+  padding: 10px; /* Espaciado interno de los comentarios */
+  border: 1px solid #ccc; /* Borde de los comentarios */
+  border-radius: 5px; /* Bordes redondeados de los comentarios */
+  background-color: #a8a8a8;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+
+/* Estilos para las imágenes dentro de los comentarios */
+.comentario img {
+  width: 50px; /* Ancho de las imágenes */
+  height: 50px; /* Altura de las imágenes */
+  border-radius: 50%; /* Bordes redondeados de las imágenes */
+  margin-right: 10px; /* Margen derecho de las imágenes */
+  object-fit: cover; /* Ajustar la imagen para cubrir el contenedor */
+}
+
+/* Estilos para el nombre dentro de los comentarios */
+.comentario .nombre {
+  font-weight: bold; /* Fuente en negrita para el nombre */
+  margin-bottom: 5px; /* Margen inferior para separar del texto */
+}
+
+/* Estilos para el texto dentro de los comentarios */
+.comentario .texto {
+  color: #555; /* Color específico para el texto dentro de los comentarios */
+}
+
+
+/* Estilos para el contenedor del botón */
+.call-to-action {
+  display: inline-block; /* Para que el botón ocupe solo el espacio necesario */
+  margin-top: 150px; /* Margen superior para separar del contenido anterior */
   
+<<<<<<< HEAD
   .cajas {
     display: flex;
     justify-content: space-around;
@@ -156,6 +274,8 @@ span {
   display: inline-block; /* Para que el botón ocupe solo el espacio necesario */
   margin-top: 150px; /* Margen superior para separar del contenido anterior */
   
+=======
+>>>>>>> 0287f7ed8344a5bb04f15cffeca676f4f278ccd8
 }
 
 /* Estilos para la imagen y el texto */

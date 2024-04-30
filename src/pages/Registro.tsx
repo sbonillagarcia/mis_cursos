@@ -8,13 +8,24 @@ const Registro: React.FC = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleRegistro = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleRegistro = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Lógica para enviar datos de registro aquí
-    console.log('Datos de registro:', email, password, confirmPassword);
-    // Después del registro, redirige al usuario al perfil
-    navigate('/perfil'); // Redirige al perfil después del registro
+    try {
+      const response = await fetch('http://localhost:5000/api/registro', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await response.json();
+      console.log(data.message);
+      navigate('/perfil');
+    } catch (error) {
+      console.error('Error al registrar usuario:', error);
+    }
   };
+  
 
   return (
     <div className="registro-container">

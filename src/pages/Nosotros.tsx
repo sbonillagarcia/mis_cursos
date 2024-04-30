@@ -5,7 +5,7 @@ const Nosotros: React.FC = () => {
   const [archivoSubido, setArchivoSubido] = useState(false);
 
   return (
-    <div className="imagen-principal" style={{ backgroundImage: "url('https://www.bing.com/images/create/una-junta-de-oficina-con-pocas-personas-y-que-haci/1-6612ba478832436cae270c57e206c225?id=bq6EwwQKIXKwJJKM17ViFQ%3D%3D&view=detailv2&idpp=genimg&idpclose=1&thid=OIG2.t3bGJzJ6duUCmOxBVN1K&frame=sydedg&form=SYDBIC')" }}>
+    <div className="nosotros">
       <h2>¿Quiénes somos?</h2>
       <p>En Escala, creemos que aprender un nuevo idioma debería ser accesible para todos. Somos una plataforma dedicada a ofrecer cursos de idiomas de alta calidad de forma completamente gratuita. Nuestro equipo está compuesto por expertos lingüistas y apasionados educadores que trabajan incansablemente para desarrollar métodos de enseñanza innovadores y efectivos.</p>
       <video controls width="600">
