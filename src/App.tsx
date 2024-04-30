@@ -10,7 +10,7 @@ import Nosotros from './pages/Nosotros';
 import Certificaciones from './pages/Certificaciones';
 import Perfil from './pages/Perfil';
 import { AuthProvider } from './AuthContext';
-import { connectToMongo } from './mongo.js'; // Ruta a tu archivo mongo.js
+//import { connectToMongo } from './mongo.js'; // Ruta a tu archivo mongo.js
 import './styles.css';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
   const [mensajeServidor, setMensajeServidor] = useState('');
 
   useEffect(() => {
-    connectToMongo(); // Llamada a la función para conectar a MongoDB
+   // connectToMongo(); // Llamada a la función para conectar a MongoDB
     fetch('http://localhost:5000/api/ejemplo')
       .then(response => response.json())
       .then(data => setMensajeServidor(data.mensaje))
