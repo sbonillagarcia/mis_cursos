@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Importa Routes
 import Navbar from './modulos/Navbar';
 import Footer from './modulos/Footer';
@@ -33,6 +33,24 @@ function App() {
     </Router>
     </AuthProvider>
   );
+
+  const App: React.FC = () => {
+    const [data, setData] = useState<string | null>(null);
+  
+    useEffect(() => {
+      fetch("/api")
+        .then((res) => res.json())
+        .then((data) => setData(data.message));
+    }, []);
+    return (
+      <div className="App">
+        <header className="App-header">
+          <p>{!data ? "Loading..." : data}</p>
+        </header>
+      </div>
+    );
+  }
+
 }
 
 export default App;
