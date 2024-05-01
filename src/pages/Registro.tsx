@@ -8,6 +8,27 @@ const Registro: React.FC = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const handleIniciarSesion = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/iniciar-sesion', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await response.json();
+      if (response.ok) {
+        // Iniciar sesión correctamente
+        console.log('Usuario inició sesión automáticamente');
+      } else {
+        console.error('Error al iniciar sesión:', data.message);
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+    }
+  };
+  
   const handleRegistro = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -15,6 +36,7 @@ const Registro: React.FC = () => {
       return;
     }
     try {
+      // Guardar en MongoDB y en el servidor
       const response = await fetch('http://localhost:5000/api/registro', {
         method: 'POST',
         headers: {
@@ -24,21 +46,18 @@ const Registro: React.FC = () => {
       });
       const data = await response.json();
       console.log(data.message);
-
-      // Guardar en MongoDB
-      await fetch('http://localhost:5000/api/guardar-en-mongo', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
-      });
-
+  
+      // Iniciar sesión automáticamente después de registrar
+      await handleIniciarSesion();
+  
+      // Redirigir a la página de perfil
       navigate('/perfil');
     } catch (error) {
       console.error('Error al registrar usuario:', error);
     }
   };
+  
+  
 
   return (
     <div className="registro-container">

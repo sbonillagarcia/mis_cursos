@@ -16,36 +16,48 @@ const Perfil: React.FC = () => {
   const [autenticado, setAutenticado] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const usuarioRegistrado = localStorage.getItem('usuario');
     if (usuarioRegistrado) {
-      setUsuario(JSON.parse(usuarioRegistrado));
+      const usuarioGuardado = JSON.parse(usuarioRegistrado);
+      setUsuario(usuarioGuardado);
+      setEmail(usuarioGuardado.email); // Ajusta el estado del email si se encuentra en el almacenamiento local
       setAutenticado(true);
     }
   }, []);
 
-  const handleIniciarSesion = (e: FormEvent) => {
+  const handleIniciarSesion = async (e: FormEvent) => {
     e.preventDefault();
-    // Aquí puedes realizar la lógica de autenticación
-    // Por ahora, solo vamos a simular que el usuario inicia sesión correctamente
-    setUsuario({
-      nombre: 'Juan Pérez',
-      numeroDocumento: '1234567890',
-      cursos: [
-        { nombre: 'Curso 1', progreso: 80 },
-        { nombre: 'Curso 2', progreso: 50 },
-        { nombre: 'Curso 3', progreso: 100 },
-      ],
-      fotoPerfil: 'URL_DE_LA_IMAGEN'
-    });
-    setAutenticado(true);
-    localStorage.setItem('usuario', JSON.stringify(usuario));
+    try {
+      const response = await fetch('http://localhost:5000/api/iniciar-sesion', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setUsuario(data.usuario);
+        setAutenticado(true);
+        localStorage.setItem('usuario', JSON.stringify(data.usuario));
+      } else {
+        setError(data.message);
+      }
+    } catch (error) {
+      setError('Error al iniciar sesión');
+      console.error('Error al iniciar sesión:', error);
+    }
   };
 
   const handleCerrarSesion = () => {
     setUsuario(null);
     setAutenticado(false);
+    setEmail('');
+    setPassword('');
+    setError('');
     localStorage.removeItem('usuario');
   };
 
@@ -59,6 +71,7 @@ const Perfil: React.FC = () => {
           <label>Contraseña:</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           <button type="submit">Iniciar Sesión</button>
+          {error && <p className="error-message">{error}</p>}
         </form>
       </div>
     );

@@ -13,18 +13,19 @@ import './styles.css';
 //import { connectToMongo } from './mongo.js'; // Esta importación no es necesaria aquí
 
 const App = () => {
+
+  const [data,setData]=React.useState(null);
   const [fotoPerfil, setFotoPerfil] = useState('');
   const [mensajeServidor, setMensajeServidor] = useState('');
 
-  useEffect(() => {
-    // Esta función debería estar en el servidor, no en el cliente
+    
     // connectToMongo(); // Llamada a la función para conectar a MongoDB
 
-    fetch('http://localhost:5000/api/registro')
-      .then(response => response.json())
-      .then(data => setMensajeServidor(data.message))
-      .catch(error => console.error(error));
-  }, []);
+    useEffect(() => {
+      fetch("/api")
+        .then((res) => res.json())
+        .then((data) => setData(data.message));
+    }, []);
 
   return (
     <AuthProvider>

@@ -34,6 +34,7 @@ export async function guardarUsuario(email, password) {
 }
 
 // Función para buscar un usuario
+
 export async function buscarUsuario(email) {
   if (!collection) {
     throw new Error('La conexión a MongoDB no ha sido establecida');
