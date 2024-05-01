@@ -1,55 +1,106 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import React, { useState, ChangeEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
-  const navigate = useNavigate(); // Usa useNavigate para la navegación
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [comentarios, setComentarios] = useState([
+    {
+      id: 1,
+      usuario: 'Juan',
+      comentario: 'Aprendi mucho gracias',
+      calificacion: 0,
+    },
+  ]);
+  const [nuevoComentario, setNuevoComentario] = useState({
+    usuario: '',
+    comentario: '',
+    calificacion: 0,
+  });
+  const [comentarioCalificacion, setComentarioCalificacion] = useState('');
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Lógica para iniciar sesión aquí
-    console.log('Iniciar sesión con:', email, password);
-    navigate('/perfil'); // Navega a la ruta '/perfil' después de iniciar sesión
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setNuevoComentario((prevComentario) => ({
+      ...prevComentario,
+      [name]: value,
+    }));
+  };
+
+  const handlePublicarComentario = () => {
+    if (nuevoComentario.usuario && nuevoComentario.comentario && comentarioCalificacion) {
+      const newComentario = {
+        id: comentarios.length + 1,
+        ...nuevoComentario,
+        calificacion: Number(comentarioCalificacion),
+      };
+      setComentarios([...comentarios, newComentario]);
+      setNuevoComentario({
+        usuario: '',
+        comentario: '',
+        calificacion: 0,
+      });
+      setComentarioCalificacion('');
+    }
+  };
+
+  const handleCalificarComentario = (id: number, calificacion: number) => {
+    const updatedComentarios = comentarios.map((comentario) =>
+      comentario.id === id ? { ...comentario, calificacion } : comentario
+    );
+    setComentarios(updatedComentarios);
   };
 
   return (
     <div className="login-container">
-      <h2>Iniciar Sesión</h2>
-      <form onSubmit={handleLogin}>
-        <div className="form-group">
-          <label htmlFor="email">Correo Electrónico</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+      <div className="comentarios-container">
+        <h2>Comentarios de usuarios</h2>
+        <div className="comentarios-list">
+          {comentarios.map((comentario) => (
+            <div key={comentario.id} className="Comentarios">
+              <h3>{comentario.usuario}</h3>
+              <p>{comentario.comentario}</p>
+              <div className="estrellas">
+                {[1, 2, 3, 4, 5].map((estrella) => (
+                  <span
+                    key={estrella}
+                    className={comentario.calificacion >= estrella ? 'estrella-activa' : ''}
+                    onClick={() => handleCalificarComentario(comentario.id, estrella)}
+                  >
+                    ★
+                  </span>
+                ))}
+              </div>
+              <p>Calificación: {comentario.calificacion}</p>
+            </div>
+          ))}
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Contraseña</label>
+        <div className="nuevo-comentario">
           <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            type="text"
+            placeholder="Nombre de usuario"
+            name="usuario"
+            value={nuevoComentario.usuario}
+            onChange={handleInputChange}
           />
+          <textarea
+            placeholder="Escribe tu comentario"
+            name="comentario"
+            value={nuevoComentario.comentario}
+            onChange={handleInputChange}
+          />
+          <input
+            type="number"
+            placeholder="Calificación (1-5)"
+            value={comentarioCalificacion}
+            onChange={(e) => setComentarioCalificacion(e.target.value)}
+          />
+          <button onClick={handlePublicarComentario}>Publicar</button>
         </div>
-        <button type="submit" className="login-button">
-          Iniciar Sesión
-        </button>
-        <a href="#">Olvidaste tu contraseña?</a>
-      </form>
-      <div className="google-login">
-        <button className="google-button">Iniciar Sesión con Google</button>
       </div>
     </div>
   );
 };
 
 export default Login;
+

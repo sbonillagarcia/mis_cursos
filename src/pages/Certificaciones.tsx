@@ -53,8 +53,8 @@ const Certificaciones: React.FC = () => {
           <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
         </div>
         <div className="form-group">
-          <label htmlFor="clave">Cntraseña:</label>
-          <input type="text" value={apellidos} onChange={(e) => setApellidos(e.target.value)} required />
+          <label htmlFor="clave">Contraseña:</label>
+          <input type="password" value={apellidos} onChange={(e) => setApellidos(e.target.value)} required />
         </div>     
         <button type="submit">Generar Certificado</button>
       </form>
